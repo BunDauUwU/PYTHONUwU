@@ -2,19 +2,19 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 root = Tk()
-photo =PhotoImage(file = 'hutao.png')
+photo =PhotoImage(file = '.\GIAO DIEN\hutao.png')
 root.wm_iconphoto(False, photo)
 root.title("Tiền điện hoặc gì đó tương tự")
 root.minsize(height=500, width=750)
 res = [0,0]
-val = [1.728, 1786, 2.074, 2.612, 2.919, 3.015]
-level = [50, 100, 200, 300, 400, 0]
+val = [1728, 1786, 2074, 2612, 2919, 3015]
+level = [50, 100, 200, 300, 400, float('inf')]
 money = dict()
 def calc(price):
    lst = 0
    for i in range(0, len(val)):
-      lst += min(val[i], price)*level[i]
-      price -= val[i]
+      lst += min(level[i], price)*val[i]
+      price -= level[i]
       if price < 0:
          break
    return lst*108/100
@@ -30,7 +30,10 @@ def tinh():
    res[0] = 0
    for i in money.keys():
       res[0] += money.get(i)
-   res[1] = res[0] / len(money)
+   if len(money) == 0:
+      res[1] = 0
+   else:
+      res[1] = res[0] / len(money)
    # for i in range(0, len(money)):
       # listbox.insert(i,f"Tháng {i + 1}: {money[i]/1*1} đồng")
    listBox.insert(len(money)+1,f"Tổng tiền điện: {calc(res[0])} đồng")
@@ -49,8 +52,8 @@ def out():
 ## Variable ##
 pos = StringVar()
 Value = DoubleVar()
-##
-image = Image.open("./hutao.png")
+## 
+image = Image.open(".\GIAO DIEN\hutao.png")
  
 # Resize the image using resize() method
 resize_image = image.resize((500, 500))
