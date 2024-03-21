@@ -17,7 +17,7 @@ def calc(price):
       price -= val[i]
       if price < 0:
          break
-   return lst
+   return lst*108/100
 ##
 def sua():
    listbox.delete(0,END)
