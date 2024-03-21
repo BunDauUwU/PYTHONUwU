@@ -30,7 +30,7 @@ def tinh():
    res[0] = 0
    for i in money.keys():
       res[0] += money.get(i)
-   res[1] = res[0] / 12
+   res[1] = res[0] / len(money)
    # for i in range(0, len(money)):
       # listbox.insert(i,f"Tháng {i + 1}: {money[i]/1*1} đồng")
    listBox.insert(len(money)+1,f"Tổng tiền điện: {calc(res[0])} đồng")
